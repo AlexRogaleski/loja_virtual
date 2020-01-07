@@ -22,7 +22,7 @@ class CustomDrawer extends StatelessWidget {
         children: <Widget>[
           _buildDrawerBack(),
           ListView(
-            padding: EdgeInsets.only(left: 32.0, top: 16.0),
+            padding: EdgeInsets.only(left: 32.0, top: 26.0),
             children: <Widget>[
               Container(
                 margin: EdgeInsets.only(bottom: 8.0),
@@ -52,7 +52,7 @@ class CustomDrawer extends StatelessWidget {
                           ),
                           GestureDetector(
                             child: Text(
-                              "Entre ou cadasttre-se >",
+                              "Entre ou cadastre-se >",
                               style: TextStyle(
                                   color: Theme.of(context).primaryColor,
                                   fontSize: 16.0,
