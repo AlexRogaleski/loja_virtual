@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:loja_virtual/models/cartModel.dart';
+import 'package:loja_virtual/models/userModel.dart';
 import 'package:loja_virtual/screens/homeScreen.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Loja Flutter',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        primaryColor: Color.fromARGB(255, 4, 125, 141)
-      ),
-      home: HomeScreen(),
-    );
+    return ScopedModel<UserModel>(
+        model: UserModel(),
+        child: ScopedModelDescendant<UserModel>(
+          builder: (context, child, model) {
+            return ScopedModel<CartModel>(
+              model: CartModel(model),
+              child: MaterialApp(
+                title: 'Loja Flutter',
+                theme: ThemeData(
+                    primarySwatch: Colors.blue,
+                    primaryColor: Color.fromARGB(255, 4, 125, 141)),
+                home: HomeScreen(),
+              ),
+            );
+          },
+        ));
   }
 }

@@ -9,17 +9,22 @@ class CategoryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: CircleAvatar(
-        radius: 23.0,
-        backgroundColor: Colors.transparent,
-        backgroundImage: NetworkImage(snapshot.data["icon"]),
+      // leading: CircleAvatar(
+      //   radius: 23.0,
+      //   backgroundColor: Colors.transparent,
+      //   backgroundImage: NetworkImage(snapshot.data["icon"]),
+      // ),
+      leading: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Image.network(
+          snapshot.data["icon"],
+      ),
       ),
       title: Text(snapshot.data["title"]),
       trailing: Icon(Icons.keyboard_arrow_right),
-      onTap: (){
+      onTap: () {
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (context)=>CategoryScreen(snapshot))
-        );
+            MaterialPageRoute(builder: (context) => CategoryScreen(snapshot)));
       },
     );
   }
